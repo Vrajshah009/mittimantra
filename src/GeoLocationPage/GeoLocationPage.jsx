@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { useState, useEffect } from "react";
 import "./GeoLocationPage.css";
 
@@ -8,60 +8,72 @@ const GeoLocationPage = () => {
   const [locationName, setLocationName] = useState("");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true)
+  const watchIdRef = useRef(null);
 
   const redirectToUserInput = () => {
     window.location.href = "/user-input";
   };
 
   useEffect(() => {
-   if(!navigator.geolocation){
-    setError("Genolocation is not supported by this browser")
-    setLoading(false)
-    return;
-   }
-
-   const watchId = navigator.geolocation.watchPosition(
-    (position) => {
-      const { latitude, longitude } = position.coords;
-      setLocation({
-        lat: latitude,
-        lon: longitude
-      })
-      setError(null)
+    if (!navigator.geolocation) {
+      setError("Genolocation is not supported by this browser")
       setLoading(false)
-    },
-    (err) => {
-      switch (err.code) {
-        case err.PERMISSION_DENIED:
-          setError("Location permission denied by user.");
-          break;
-        case err.POSITION_UNAVAILABLE:
-          setError("Location information unavailable. Please check your device settings.");
-          break;
-        case err.TIMEOUT:
-          setError("Location request timed out. Please try again.");
-          break;
-        default:
-          setError("An unknown error occurred while getting location.");
-      }
-    },
-    {
-      enableHighAccuracy: true,
-      timeout: 5000,
-      maximumAge: 0
+      return;
     }
-   )
 
-   return () => navigator.geolocation.clearWatch(watchId);
+    watchIdRef.current = navigator.geolocation.watchPosition(
+      (position) => {
+        const { latitude, longitude } = position.coords;
+        setLocation({
+          lat: latitude,
+          lon: longitude
+        })
+        setError(null)
+        setLoading(false)
+      },
+      (err) => {
+        switch (err.code) {
+          case err.PERMISSION_DENIED:
+            setError("Location permission denied by user.");
+            break;
+          case err.POSITION_UNAVAILABLE:
+            setError("Location information unavailable. Please check your device settings.");
+            break;
+          case err.TIMEOUT:
+            setError("Location request timed out. Please try again.");
+            break;
+          default:
+            setError("An unknown error occurred while getting location.");
+        }
+      },
+      {
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 0
+      }
+    )
+
+    return () => {
+      if (watchIdRef.current) navigator.geolocation.clearWatch(watchIdRef.current);
+    };
   }, []);
 
-  const mapSrc = `https://www.google.com/maps?q=${location.lat},${location.lon}&z=19&t=k&output=embed`;
+  const mapSrc = React.useMemo(() => `https://www.google.com/maps?q=${location.lat},${location.lon}&z=19&t=k&output=embed`, [location])
 
   const handleSaveLocation = () => {
     setSavedLocations([...savedLocations, { ...location, name: locationName }]);
     setLocationName("");
   }
 
+  const loadSavedLocation = (loc) => {
+    console.log("Location is", loc)
+    if (watchIdRef.current) {
+      navigator.geolocation.clearWatch(watchIdRef.current);
+      watchIdRef.current = null;
+    }
+    console.log("Map source is", mapSrc)
+    setLocation({ lat: loc.lat, lon: loc.lon });
+  };
 
   return (
     <>
@@ -87,6 +99,7 @@ const GeoLocationPage = () => {
             {location.lat && location.lon ? (
               <>
                 <iframe
+                  key={mapSrc}
                   src={mapSrc}
                   width="600"
                   height="450"
@@ -94,7 +107,7 @@ const GeoLocationPage = () => {
                   allowFullScreen=""
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                ></iframe>
+                />
               </>
             ) : (
               <p>Tracking location...</p>
@@ -107,7 +120,11 @@ const GeoLocationPage = () => {
               <h2>Saved Locations</h2>
               <ul className='saved-location-list'>
                 {savedLocations.map((loc, index) => (
-                  <li key={index} onClick={() => setLocation({lat: loc.lat, lon: loc.lon})} className='saved-location'>
+                  <li
+                    key={index}
+                    onClick={() => loadSavedLocation(loc)}
+                    className='saved-location'
+                  >
                     <div>Location Name: {loc.name}</div>
                     <div>Latitude: {loc.lat}</div>
                     <div>Longitude: {loc.lon}</div>

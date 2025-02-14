@@ -23,7 +23,7 @@ const GeoLocationPage = () => {
    const watchId = navigator.geolocation.watchPosition(
     (position) => {
       const { latitude, longitude } = position.coords;
-      setLocaation({
+      setLocation({
         lat: latitude,
         lon: longitude
       })

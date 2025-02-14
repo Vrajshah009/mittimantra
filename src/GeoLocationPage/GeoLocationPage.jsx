@@ -103,8 +103,8 @@ const GeoLocationPage = () => {
                 <iframe
                   key={mapSrc}
                   src={mapSrc}
-                  width="600"
-                  height="450"
+                  width="700"
+                  height="550"
                   style={{ border: "0" }}
                   allowFullScreen=""
                   loading="lazy"

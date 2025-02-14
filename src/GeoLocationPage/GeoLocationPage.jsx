@@ -11,7 +11,7 @@ const GeoLocationPage = () => {
   const watchIdRef = useRef(null);
 
   const redirectToUserInput = () => {
-    window.location.href = "/user-input";
+    window.location.href = "/personalize";
   };
 
   useEffect(() => {

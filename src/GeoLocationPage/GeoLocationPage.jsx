@@ -2,24 +2,26 @@ import React, { useRef } from 'react'
 import { useState, useEffect } from "react";
 import "./GeoLocationPage.css";
 
+
 const GeoLocationPage = () => {
   const [location, setLocation] = useState({ lat: null, lon: null });
   const [savedLocations, setSavedLocations] = useState([]);
   const [locationName, setLocationName] = useState("");
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true)
   const watchIdRef = useRef(null);
+
 
   const redirectToUserInput = () => {
     window.location.href = "/personalize";
   };
 
   useEffect(() => {
+
     if (!navigator.geolocation) {
       setError("Genolocation is not supported by this browser")
       setLoading(false)
       return;
     }
+
 
     watchIdRef.current = navigator.geolocation.watchPosition(
       (position) => {

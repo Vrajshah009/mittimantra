@@ -1,6 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import "./ReportGenerationPage.css";
+import { Bar, Pie, Line } from 'react-chartjs-2';
+import { Chart, registerables } from 'chart.js';
+
+Chart.register(...registerables);
+
+const fetchWeatherData = async () => {
+    const apiKey = "c4eba89c97fc09fc1a233d28ca043b4e";
+    const lat = 22.554029;
+    const lon = 72.948936;
+    const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`);
+    const data = await response.json();
+    return data.list.map(entry => ({
+        temperature: entry.main.temp,
+        humidity: entry.main.humidity,
+        pressure: entry.main.pressure,
+        time: entry.dt_txt
+    }));
+};
+
 
 const ReportGenerationPage = () => {
 
@@ -9,6 +28,7 @@ const ReportGenerationPage = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [data, setData] = useState(null);
+    const [weatherData, setWeatherData] = useState([]);
 
     const prompt = `
 You are an AI assistant specialized in agricultural analysis. Your task is to create a comprehensive soil and crop assessment report for farmers in the following JSON format. The report should be accurately generated based on the user input and provide actionable insights. Ensure the response is written in simple, farmer-friendly language, avoiding technical jargon.
@@ -66,7 +86,7 @@ Ensure the response is concise, clear, and provides practical advice for farmers
             }
 
             const data = await response.json();
-            
+
 
             // console.log("Raw API Response:", data);
             console.log("Parsed API Response:", (data.response));
@@ -92,9 +112,26 @@ Ensure the response is concise, clear, and provides practical advice for farmers
     };
 
     useEffect(() => {
+
+        const fetchWeather = async () => {
+            const weatherData = await fetchWeatherData();
+            setWeatherData(weatherData);
+        };
+
+        fetchWeather();
+
         if (crop && cropVariant && previousCrop && soilType && irrigation && fertilizer && acres) {
             callApi();
         }
+
+        return () => {
+            // Destroy all charts to avoid canvas reuse error
+            Object.values(Chart.instances).forEach(instance => {
+                if (instance) {
+                    instance.destroy();
+                }
+            });
+        };
     }, [crop, cropVariant, previousCrop, soilType, irrigation, fertilizer, acres]);
 
     if (loading) {
@@ -106,15 +143,42 @@ Ensure the response is concise, clear, and provides practical advice for farmers
         );
     }
 
+    const weatherChartData = {
+        labels: weatherData.map(entry => entry.time),
+        datasets: [
+            {
+                label: 'Temperature (K)',
+                data: weatherData.map(entry => entry.temperature),
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1
+            },
+            {
+                label: 'Humidity (%)',
+                data: weatherData.map(entry => entry.humidity),
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            },
+            {
+                label: 'Pressure (hPa)',
+                data: weatherData.map(entry => entry.pressure),
+                backgroundColor: 'rgba(255, 206, 86, 0.2)',
+                borderColor: 'rgba(255, 206, 86, 1)',
+                borderWidth: 1
+            }
+        ]
+    };
+
     return (
         <div className="app-container">
             <h1>Soil & Crop Assessment</h1>
 
-            {error && (
+            {/* {error && (
                 <div className="error-container">
                     <h2>Error: {error}</h2>
                 </div>
-            )}
+            )} */}
 
             {data && (
                 <div className="parsed-data-container">
@@ -128,6 +192,16 @@ Ensure the response is concise, clear, and provides practical advice for farmers
                     <p><strong>Farming recommendation (खेती की सिफ़ारिश/ખેતીની ભલામણ): </strong> {data['farming_recommendation']}</p>
                     <p><strong>Alternative Crops (वैकल्पिक फसलें/વૈકલ્પિક પાક): </strong> {data['alternative_crops']}</p>
                     <p><strong>Recommendations (सिफारिशों/ભલામણો): </strong> {data['recommendations']}</p>
+                    {weatherData.length > 0 && (
+                        <div>
+                            <h3>Weather Details</h3>
+                            <Line
+                                key="weather_chart"
+                                data={weatherChartData}
+                                options={{ responsive: true }}
+                            />
+                        </div>
+                    )}
                 </div>
             )}
         </div>

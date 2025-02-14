@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Livvic:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,900&display=swap');
+
+.homepage{
+    font-family: "Livvic", serif;
+    background-image: url('src/HomePage/image.svg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    overflow-y: hidden;
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #334B35;
+    color: white;
+    padding: 20px 40px;
+    flex-direction: row-reverse;
+}
+
+.logo-img{
+    height: 60px;
+}
+
+.hero-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 240px;
+}
+
+.orginal-img{
+    height: 40px;
+}
+
+.hero-section-text{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 650px;
+}
+
+.hero-section-heading{
+    font-size: 70px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.hero-section-heading-yellow{
+    font-size: 70px;
+    font-weight: 600;
+    color: #F7C35F;
+    margin-bottom: 10px;
+}
+
+.hero-section-description{
+    font-size: 1.3rem;
+    color: #ffffff;
+    margin: 30px 0px;
+}
+
+.button{
+    padding: 25px 50px;
+    background-color: #F7C35F;
+    text-align: center;
+    color: #000000;
+    font-size: 15px;
+    border-radius: 20px;
+    max-width: 280px;
+    cursor: pointer;
+}
+
+/* .navbar h2{
+    color: white;
+    text-decoration: none;
+    font-size: 40px;
+    font-family: 'Times New Roman', Times, serif;
+    list-style: none;
+} */
+
+/* .navname{
+    display: flex;
+    list-style-type: none;
+    gap: 50px;
+} */

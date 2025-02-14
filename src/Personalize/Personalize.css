@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Livvic:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,900&display=swap');
+
+.personalize-page {
+    font-family: "Livvic", serif;
+    padding: 40px;
+    background-image: url('src/Personalize/bg.png');
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.personalize-heading {
+    font-size: 48px;
+    margin-bottom: 30px;
+    font-weight: 600;
+    color: #ECF0F1;
+    text-align: center;
+}
+
+.personalize-form {
+    width: 100%;
+    max-width: 800px;
+    background-color: #D9D9D910;
+    padding: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    position: fixed;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 20px;
+    color: #ECF0F1;
+    margin-bottom: 10px;
+}
+
+.input-group input {
+    width: 100%;
+    max-width: 750px;
+    padding: 20px;
+    border: 1px solid #BDC3C7;
+    border-radius: 5px;
+    background-color: #D9D9D940;
+    color: #ffffff;
+    font-size: 20px;
+}
+
+.button {
+    background-color: #334B35;
+    color: #fff;
+    padding: 20px 40px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #6D8C54;
+}
+
+.button:disabled {
+    background-color: #95A5A6;
+    cursor: not-allowed;
+}

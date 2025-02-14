@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Livvic:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,900&display=swap');
+
+
+.geo-location-page {
+    display: flex;
+    flex-direction: column;
+    font-family: 'livvic';
+    overflow-y: scroll;
+    background-image: url('src/GeoLocationPage/bg.png');
+    background-size: cover;
+    height: 100vh;
+}
+
+.geo-location-content {
+    display: flex;
+    flex: 1;
+}
+
+.goe-location-details {
+    flex: .5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    gap: 20px;
+}
+
+.geo-location-box{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    background-color: #D9D9D910;
+    padding: 60px 140px;
+    border-radius: 10px;
+}
+
+.geo-location-detail {
+    color: #ffffff;
+    font-size: 34px;
+    text-align: left;
+}
+
+.name-input-field{
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #D9D9D920;
+}
+
+.geo-location-map {
+    flex: 0.5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.saved-location-content{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    background-color: #D9D9D910;
+    border-radius: 10px;
+}
+
+.saved-location-list{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.saved-location{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    background-color: #D9D9D920;
+    border-radius: 10px;
+    cursor: pointer;
+}

@@ -6,6 +6,7 @@ const HomePage = () => {
   const redirectToLocation = () => {
     window.location.href = "/location";
   };
+  
   return (
     <div className="homepage">
       <div className="navbar">

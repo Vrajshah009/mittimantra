@@ -27,7 +27,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 240px;
+    padding: 180px;
 }
 
 .orginal-img{
@@ -42,26 +42,26 @@
 }
 
 .hero-section-heading{
-    font-size: 70px;
+    font-size: 60px;
     font-weight: 600;
     color: #ffffff;
 }
 
 .hero-section-heading-yellow{
-    font-size: 70px;
+    font-size: 60px;
     font-weight: 600;
     color: #F7C35F;
     margin-bottom: 10px;
 }
 
 .hero-section-description{
-    font-size: 1.3rem;
+    font-size: 20px;
     color: #ffffff;
     margin: 30px 0px;
 }
 
 .button{
-    padding: 25px 50px;
+    padding: 20px 40px;
     background-color: #F7C35F;
     text-align: center;
     color: #000000;

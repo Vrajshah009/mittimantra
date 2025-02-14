@@ -1,4 +1,4 @@
-.userinput-page{
+.userinput-page {
     background-color: #334B35;
     align-items: center;
     display: flex;
@@ -7,14 +7,14 @@
     padding: 70px;
 }
 
-.userinputpage-heading{
+.userinputpage-heading {
     font-size: 2.5rem;
     color: #FFFFFF;
     margin-bottom: 40px;
     text-align: center;
 }
 
-.categories{
+.categories {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -22,24 +22,46 @@
     margin-bottom: 40px;
 }
 
-.category{
+.category {
     display: flex;
     flex-direction: column;
     gap: 30px;
 }
 
-.opts-title{
+.opts-title {
     font-size: 1.5rem;
     color: #FFFFFF;
     margin-bottom: 10px;
     text-align: center;
 }
 
-.opts{
+.opts {
     display: flex;
     gap: 90px;
 }
 
-.opt{
-    
+.opt-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 50px;
+    background-color: #D9D9D910;
+    max-width: 350px;
+    min-height: 300px;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.opt-container:hover {
+    background-color: #D9D9D920;
+}
+
+.opt-img{
+    width: 260px;
+}
+
+.opt {
+    font-size: 28px;
+    text-transform: uppercase;
+    color: #FFFFFF;
 }

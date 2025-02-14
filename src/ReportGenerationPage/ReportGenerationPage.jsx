@@ -28,7 +28,7 @@ Generate the response in the following JSON format:
 
 \`\`\`json
 {
-  "score": "Provide a suitability score out of 10 in this format: 'The suitability score for growing ${crop} in your ${area_size} of ${soil_type} is X.X/10.'",
+  "score": "Provide a suitability score out of 10 in this format: 'The suitability score for growing ${crop} in your ${acres} of ${soilType} is X.X/10.'",
   "overview": "Summarize the overall suitability of the provided soil, crop, and conditions in 1-2 sentences.",
   "key_observations": "Highlight key observations about soil texture, nutrient availability, and crop compatibility in 2-3 sentences.",
   "assessments": "Provide potential yield percentage compared to optimal conditions, average expected yield per acre, and any soil or climate-related limitations.",

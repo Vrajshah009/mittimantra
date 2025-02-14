@@ -74,14 +74,10 @@ const ReportGenerationPage = () => {
 
             const data = await response.json();
 
-            // console.log("Raw API Response:", data);
-            console.log("Parsed API Response:", JSON.parse(data.response));
+            console.log("Parsed API Response:", data.response);
 
-            const parsedData = JSON.parse(data.response);
+            setData(data.response);
 
-            setData(parsedData);
-
-            // Clear the state to prevent repeated API calls
             location.state.crop = null;
             location.state.cropVariant = null;
             location.state.soilType = null;

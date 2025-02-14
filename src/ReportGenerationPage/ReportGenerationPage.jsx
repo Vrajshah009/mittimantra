@@ -26,7 +26,6 @@ User Input:
 
 Generate the response in the following JSON format:
 
-\`\`\`json
 {
   "score": "Provide a suitability score out of 10 in this format: 'The suitability score for growing ${crop} in your ${acres} of ${soilType} is X.X/10.'",
   "overview": "Summarize the overall suitability of the provided soil, crop, and conditions in 1-2 sentences.",
@@ -39,8 +38,6 @@ Generate the response in the following JSON format:
   "alternative_crops": "Suggest 1-2 alternative crops if the selected crop is not highly suitable, explaining why they may be better options.",
   "recommendations": "List specific actionable steps for fertilizer dosage, irrigation frequency, pest control, and expected yield improvements."
 }
-\`\`\`
-
 Ensure the response is concise, clear, and provides practical advice for farmers. Generate only the JSON object without any additional text.
 `;
 

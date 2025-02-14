@@ -69,9 +69,10 @@ Ensure the response is concise, clear, and provides practical advice for farmers
             }
 
             const data = await response.json();
+            
 
             // console.log("Raw API Response:", data);
-            console.log("Parsed API Response:", JSON.parse(data.response));
+            console.log("Parsed API Response:", (data.response));
 
             const parsedData = JSON.parse(data.response);
 

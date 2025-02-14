@@ -14,7 +14,7 @@ const GeoLocationPage = () => {
   };
 
   useEffect(() => {
-   if(!navigation.geolocation){
+   if(!navigator.geolocation){
     setError("Genolocation is not supported by this browser")
     setLoading(false)
     return;

@@ -30,7 +30,7 @@
 .geo-location-box{
     display: flex;
     flex-direction: column;
-    gap: 50px;
+    gap: 30px;
     background-color: #D9D9D910;
     padding: 60px 140px;
     border-radius: 10px;
@@ -48,6 +48,8 @@
     border-radius: 5px;
     border: none;
     background-color: #D9D9D920;
+    color: #ffffff;
+    font-size: 20px;
 }
 
 .geo-location-map {
@@ -81,4 +83,5 @@
     background-color: #D9D9D920;
     border-radius: 10px;
     cursor: pointer;
+    color: #ffffff;
 }

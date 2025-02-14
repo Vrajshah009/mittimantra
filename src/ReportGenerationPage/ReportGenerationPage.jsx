@@ -11,34 +11,39 @@ const ReportGenerationPage = () => {
     const [data, setData] = useState(null);
 
     const prompt = `
-    You are a chatbot working as an analyst for farmer issues. Create a detailed soil and crop assessment report with a suitability score, key observations, and recommendations. Ensure the score and all other details are evaluated based on the given user input (e.g., soil type, crop, fertilizer, location, etc.). The response should be easy to understand for farmers, using simple language and avoiding technical jargon. Do not add any extra information beyond the required fields. The response should be accurately generated based on the user input, not copied from the sample response.
+You are an AI assistant specialized in agricultural analysis. Your task is to create a comprehensive soil and crop assessment report for farmers in the following JSON format. The report should be accurately generated based on the user input and provide actionable insights. Ensure the response is written in simple, farmer-friendly language, avoiding technical jargon.
 
-            user_input:
-            {
-            "soil_type": ${soilType},
-            "crop": ${crop},
-            "crop_variant": ${cropVariant},
-            "previous_crop": ${previousCrop},
-            "selected_fertilizer": ${fertilizer},
-            "irrigation_method": ${irrigation},
-            "area_size": ${acres} acres,
-            }
+User Input:
+{
+  "soil_type": "${soilType}",
+  "crop": "${crop}",
+  "crop_variant": "${cropVariant}",
+  "previous_crop": "${previousCrop}",
+  "selected_fertilizer": "${fertilizer}",
+  "irrigation_method": "${irrigation}",
+  "area_size": "${acres} acres"
+}
 
-            sample_response:
-            {
-            "score": "A precise score out of 10 based on soil type, crop suitability, fertilizer efficiency, climate compatibility, and irrigation method like 7.8/10",
-            "overview": "A brief summary of the soil and crop compatibility based on the provided inputs, highlighting key suitability and challenges.",
-            "key_observations": "Detailed observations regarding soil texture, nutrient availability, moisture retention, drainage capacity, and compatibility with the selected crop.",
-            "assessments": "A scientific assessment including potential yield percentage compared to optimal conditions, average expected production per acre (in kg/tons), and limitations caused by soil or climate factors.",
-            "soil_and_weather_analysis": "An analytical breakdown of soil composition, pH range, organic matter percentage, and how local weather patterns (average rainfall, temperature variations, etc.) affect crop growth.",
-            "fertilizer_evaluation": "Analysis of how well the selected fertilizer meets crop nutrient demands, NPK ratio balance, and additional recommended amendments for optimal growth.",
-            "farming_recommendation": "Best agronomic practices to improve yield, soil health, and irrigation efficiency. Includes ideal planting depth, spacing, and disease prevention strategies.",
-            "suggested_farming_method": "A tailored farming method recommendation based on land size, soil type, and irrigation method, such as precision farming, crop rotation, or organic techniques.",
-            "alternative_crops": "If the selected crop has moderate or poor suitability, suggest better alternative crops that align with soil conditions and climate.",
-            "recommendations": "Data-backed action points such as ideal fertilizer dosage (in kg per acre), irrigation frequency (times per week), pest control measures, and expected yield improvement percentages if recommended changes are implemented."
-            }
+Generate the response in the following JSON format:
 
-            `;
+\`\`\`json
+{
+  "score": "Provide a suitability score out of 10 in this format: 'The suitability score for growing ${crop} in your ${area_size} of ${soil_type} is X.X/10.'",
+  "overview": "Summarize the overall suitability of the provided soil, crop, and conditions in 1-2 sentences.",
+  "key_observations": "Highlight key observations about soil texture, nutrient availability, and crop compatibility in 2-3 sentences.",
+  "assessments": "Provide potential yield percentage compared to optimal conditions, average expected yield per acre, and any soil or climate-related limitations.",
+  "soil_and_weather_analysis": "Analyze soil composition, pH range, organic matter percentage, and how local weather affects crop growth.",
+  "fertilizer_evaluation": "Evaluate the selected fertilizer's effectiveness and recommend additional nutrients or amendments if needed.",
+  "farming_recommendation": "Provide recommendations on planting depth, spacing, irrigation frequency, and disease prevention strategies.",
+  "suggested_farming_method": "Recommend a farming method based on the farm size, irrigation method, and soil type.",
+  "alternative_crops": "Suggest 1-2 alternative crops if the selected crop is not highly suitable, explaining why they may be better options.",
+  "recommendations": "List specific actionable steps for fertilizer dosage, irrigation frequency, pest control, and expected yield improvements."
+}
+\`\`\`
+
+Ensure the response is concise, clear, and provides practical advice for farmers. Generate only the JSON object without any additional text.
+`;
+
     const callApi = async () => {
         setLoading(true);
         setError(null);

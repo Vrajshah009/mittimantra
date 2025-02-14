@@ -16,10 +16,8 @@ const Personalize = () => {
     acres: ''
   });
 
-  // initialize step to 0
   const [step, setStep] = React.useState(0);
 
-  // Define fields for each step of the form
   const fields = [
     { label: 'Crop:', name: 'crop' },
     { label: 'Crop Variant:', name: 'cropVariant' },
@@ -53,7 +51,6 @@ const Personalize = () => {
     navigate("/report", { state: selected });
   };
 
-  // animation variants for field transitions
   const variants = {
     initial: { opacity: 0, x: 100 },
     animate: { opacity: 1, x: 0 },
@@ -96,13 +93,13 @@ const Personalize = () => {
           </motion.div>
         </AnimatePresence>
       </form>
-      {step === fields.length - 1 && (
-        <div>
+      <div className='button-container'>
+        {step === fields.length - 1 && (
           <div className='button' onClick={handleSubmit}>
             Submit
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 }

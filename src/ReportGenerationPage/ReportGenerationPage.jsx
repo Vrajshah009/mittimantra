@@ -123,15 +123,6 @@ Ensure the response is concise, clear, and provides practical advice for farmers
         if (crop && cropVariant && previousCrop && soilType && irrigation && fertilizer && acres) {
             callApi();
         }
-
-        return () => {
-            // Destroy all charts to avoid canvas reuse error
-            Object.values(Chart.instances).forEach(instance => {
-                if (instance) {
-                    instance.destroy();
-                }
-            });
-        };
     }, [crop, cropVariant, previousCrop, soilType, irrigation, fertilizer, acres]);
 
     if (loading) {

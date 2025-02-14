@@ -164,7 +164,8 @@ Ensure the response is concise, clear, and provides practical advice for farmers
     return (
         <div className="app-container">
             <h1>Soil & Crop Assessment</h1>
-
+            <h2>मिट्टी एवं फसल मूल्यांकन</h2>
+            <h2>જમીન અને પાક આકારણી</h2>
             {/* {error && (
                 <div className="error-container">
                     <h2>Error: {error}</h2>

@@ -11,33 +11,42 @@ const ReportGenerationPage = () => {
     const [data, setData] = useState(null);
 
     const prompt = `
-    You are a chatbot working as an analyst for farmer issues. Create a detailed soil and crop assessment report with a suitability score, key observations, and recommendations. Ensure the score and all other details are evaluated based on the given user input (e.g., soil type, crop, fertilizer, location, etc.). The response should be easy to understand for farmers, using simple language and avoiding technical jargon. Do not add any extra information beyond the required fields. The response should be accurately generated based on the user input, not copied from the sample response.
+                You are an AI assistant specialized in agricultural analysis. Your task is to create a comprehensive soil and crop assessment report for farmers. The report should include a suitability score, key observations, and actionable recommendations based on the provided user input. Ensure the report is easy to understand, using simple language and avoiding technical jargon. The response should be accurately generated based on the user input, not copied from the sample response.
 
-            user_input:
-            {
-            "soil_type": ${soilType},
-            "crop": ${crop},
-            "crop_variant": ${cropVariant},
-            "previous_crop": ${previousCrop},
-            "selected_fertilizer": ${fertilizer},
-            "irrigation_method": ${irrigation},
-            "area_size": ${acres} acres,
-            }
+                User Input:
+                {
+                "soil_type": "${soilType}",
+                "crop": "${crop}",
+                "crop_variant": "${cropVariant}",
+                "previous_crop": "${previousCrop}",
+                "selected_fertilizer": "${fertilizer}",
+                "irrigation_method": "${irrigation}",
+                "area_size": "${acres} acres"
+                }
 
-            sample_response:
-            {
-            "score": "A precise score out of 10 based on soil type, crop suitability, fertilizer efficiency, climate compatibility, and irrigation method like 7.8/10",
-            "overview": "A brief summary of the soil and crop compatibility based on the provided inputs, highlighting key suitability and challenges.",
-            "key_observations": "Detailed observations regarding soil texture, nutrient availability, moisture retention, drainage capacity, and compatibility with the selected crop.",
-            "assessments": "A scientific assessment including potential yield percentage compared to optimal conditions, average expected production per acre (in kg/tons), and limitations caused by soil or climate factors.",
-            "soil_and_weather_analysis": "An analytical breakdown of soil composition, pH range, organic matter percentage, and how local weather patterns (average rainfall, temperature variations, etc.) affect crop growth.",
-            "fertilizer_evaluation": "Analysis of how well the selected fertilizer meets crop nutrient demands, NPK ratio balance, and additional recommended amendments for optimal growth.",
-            "farming_recommendation": "Best agronomic practices to improve yield, soil health, and irrigation efficiency. Includes ideal planting depth, spacing, and disease prevention strategies.",
-            "suggested_farming_method": "A tailored farming method recommendation based on land size, soil type, and irrigation method, such as precision farming, crop rotation, or organic techniques.",
-            "alternative_crops": "If the selected crop has moderate or poor suitability, suggest better alternative crops that align with soil conditions and climate.",
-            "recommendations": "Data-backed action points such as ideal fertilizer dosage (in kg per acre), irrigation frequency (times per week), pest control measures, and expected yield improvement percentages if recommended changes are implemented."
-            }
+                Generate a detailed report with the following sections:
 
+                1. **Suitability Score**: Provide a precise score out of 10 based on factors such as soil type, crop suitability, fertilizer efficiency, climate compatibility, and irrigation method. Example: 7.8/10.
+
+                2. **Overview**: A brief summary of the soil and crop compatibility based on the provided inputs, highlighting key suitability and challenges.
+
+                3. **Key Observations**: Detailed observations regarding soil texture, nutrient availability, moisture retention, drainage capacity, and compatibility with the selected crop.
+
+                4. **Assessments**: A scientific assessment including potential yield percentage compared to optimal conditions, average expected production per acre (in kg/tons), and limitations caused by soil or climate factors.
+
+                5. **Soil and Weather Analysis**: An analytical breakdown of soil composition, pH range, organic matter percentage, and how local weather patterns (average rainfall, temperature variations, etc.) affect crop growth.
+
+                6. **Fertilizer Evaluation**: Analysis of how well the selected fertilizer meets crop nutrient demands, NPK ratio balance, and additional recommended amendments for optimal growth.
+
+                7. **Farming Recommendations**: Best agronomic practices to improve yield, soil health, and irrigation efficiency. Includes ideal planting depth, spacing, and disease prevention strategies.
+
+                8. **Suggested Farming Method**: A tailored farming method recommendation based on land size, soil type, and irrigation method, such as precision farming, crop rotation, or organic techniques.
+
+                9. **Alternative Crops**: If the selected crop has moderate or poor suitability, suggest better alternative crops that align with soil conditions and climate.
+
+                10. **Recommendations**: Data-backed action points such as ideal fertilizer dosage (in kg per acre), irrigation frequency (times per week), pest control measures, and expected yield improvement percentages if recommended changes are implemented.
+
+                Ensure the report is clear, concise, and provides actionable insights for the farmer.
             `;
     const callApi = async () => {
         setLoading(true);

@@ -134,6 +134,21 @@ Ensure the response is concise, clear, and provides practical advice for farmers
         );
     }
 
+    const staticData = {
+        yield_chart: {
+            labels: ["Optimal", "Expected"],
+            data: [100, 85]
+        },
+        soil_composition_chart: {
+            labels: ["Sand", "Silt", "Clay"],
+            data: [40, 40, 20]
+        },
+        rainfall_chart: {
+            labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+            data: [1, 1, 1, 1, 3, 128, 294, 250, 178, 13, 3, 1]
+        }
+    };
+
     const weatherChartData = {
         labels: weatherData.map(entry => entry.time),
         datasets: [
@@ -187,6 +202,21 @@ Ensure the response is concise, clear, and provides practical advice for farmers
                     <p><strong>Farming recommendation (खेती की सिफ़ारिश/ખેતીની ભલામણ): </strong> {data['farming_recommendation']}</p>
                     <p><strong>Alternative Crops (वैकल्पिक फसलें/વૈકલ્પિક પાક): </strong> {data['alternative_crops']}</p>
                     <p><strong>Recommendations (सिफारिशों/ભલામણો): </strong> {data['recommendations']}</p>
+                    <h3>Rainfall Chart</h3>
+                    <Line
+                        key="rainfall_chart"
+                        data={{
+                            labels: staticData.rainfall_chart.labels,
+                            datasets: [{
+                                label: 'Rainfall',
+                                data: staticData.rainfall_chart.data,
+                                backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                                borderColor: 'rgba(153, 102, 255, 1)',
+                                borderWidth: 1
+                            }]
+                        }}
+                        options={{ responsive: true }}
+                    />
 
                 </div>
             )}

@@ -52,6 +52,7 @@ Generate the response in the following JSON format:
     "score": "Provide a suitability score out of 10 in this format: The suitability score for growing ${crop} in your ${acres} of ${soilType} is X.X/10.",
     "overview": "Summarize the overall suitability of the provided soil, crop, and conditions in 1-2 sentences.",
     "key_observations": "Highlight key observations about soil texture, nutrient availability, and crop compatibility in 2-3 sentences.",
+    "carbon_sequestration_analysis": "Analyze the soil’s ability to capture and store carbon. Provide a carbon sequestration score indicating the current carbon levels in the soil. Assess the percentage of organic matter and its impact on carbon retention. Explain how improving soil carbon levels can enhance fertility, increase resilience to drought, and reduce carbon emissions. Recommend organic methods such as composting, cover cropping, reduced tillage, agroforestry, biochar application, and regenerative farming techniques to improve carbon sequestration."
     "assessments": "Provide potential yield percentage compared to optimal conditions, average expected yield per acre, and any soil or climate-related limitations.",
     "soil_and_weather_analysis": "Analyze soil composition, pH range, organic matter percentage, and how local weather affects crop growth.",
     "fertilizer_evaluation": "Evaluate the selected fertilizer's effectiveness and recommend additional nutrients or amendments if needed.",
@@ -59,18 +60,6 @@ Generate the response in the following JSON format:
     "suggested_farming_method": "Recommend a farming method based on the farm size, irrigation method, and soil type.",
     "alternative_crops": "Suggest 1-2 alternative crops if the selected crop is not highly suitable, explaining why they may be better options.",
     "recommendations": "List specific actionable steps for fertilizer dosage, irrigation frequency, pest control, and expected yield improvements.",
-    "market_demand_prediction": "Analyze market demand trends for ${crop} based on historical and real-time data. Suggest whether it is a high-demand crop in the current season.",
-    "crop_price_forecasting": "Predict the potential selling price of ${crop} based on historical pricing trends, supply-chain fluctuations, and economic factors.",
-    "supply_chain_optimization": "Evaluate the best possible supply chain strategies to maximize profits, such as direct-to-market sales, contract farming, or cooperative farming models. Identify potential middlemen exploitation risks and suggest mitigation strategies."
-    "leaf_chlorophyll_content": "Analyze the SPAD Index to detect potential nutrient deficiencies in the crop. Indicate whether additional fertilization is needed.",
-    "ndvi_analysis": "Use NDVI (Normalized Difference Vegetation Index) to assess the overall health of the crop. Identify areas experiencing stress or low vegetation density.",
-    "pest_lifecycle_models": "Predict possible pest infestations based on climate trends, crop type, and historical data. Provide proactive pest management strategies.",
-    "soil_microbial_biomass": "Evaluate the level of beneficial microorganisms in the soil. Suggest actions to improve soil microbial health if necessary, such as organic amendments or cover cropping."
-    "soil_water_holding_capacity": "Analyze the soil’s ability to retain moisture. Indicate whether additional irrigation or soil amendments (e.g., organic matter) are needed to improve water retention.",
-    "irrigation_water_salinity": "Evaluate the salinity level (ECw) of the irrigation water. Suggest corrective actions if high salinity is detected, such as using gypsum or alternate water sources.",
-    "aquifer_depletion_rate": "Assess the long-term sustainability of groundwater use. Provide insights on whether water sources are being over-extracted and recommend conservation methods.",
-    "water_stress_index": "Analyze water scarcity levels in the region based on climate data. Suggest alternative irrigation strategies or drought-resistant crops if water availability is low.",
-    "irrigation_efficiency_score": "Evaluate the efficiency of the current irrigation method (drip, sprinkler, or flood). Provide recommendations for optimizing water usage to reduce waste and increase crop yield."
 }
 
 Ensure the response is concise, clear, and provides practical advice for farmers. Generate only the JSON object without any additional text.
@@ -205,8 +194,9 @@ Ensure the response is concise, clear, and provides practical advice for farmers
                     <h3>Summary (सारांश/સારાંશ)</h3>
                     <p><strong>Score (अंक/આંક): </strong> {data['score']}</p>
                     <p><strong>Overview (सिंहावलोकन/વિહંગાવલોકન): </strong> {data['overview']}</p>
+                    <p><strong>Carbon Sequestration Analysis (कार्बन संग्रहण विश्लेषण/કાર્બન સંગ્રહણ વિશ્લેષણ): </strong> {data['carbon_sequestration_analysis']}</p>
                     <p><strong>Assessments (आकलन/આકારણીઓ): </strong> {data['assessments']}</p>
-                    <h3>Yield Chart</h3>
+                    {/* <h3>Yield Chart</h3> */}
                     {/* <Bar
                         key="yield_chart"
                         data={{
@@ -222,7 +212,7 @@ Ensure the response is concise, clear, and provides practical advice for farmers
                         options={{ responsive: true }}
                     /> */}
                     <p><strong>Key Observations (मुख्य टिप्पणियाँ/મુખ્ય અવલોકનો): </strong> {data['key_observations']}</p>
-                    <h3>Soil Composition Chart</h3>
+                    {/* <h3>Soil Composition Chart</h3> */}
                     {/* <Pie
                         key="soil_composition_chart"
                         data={{
@@ -257,7 +247,6 @@ Ensure the response is concise, clear, and provides practical advice for farmers
                         </div>
                     )}
                     <p><strong>Fertilizer Evaluation (उर्वरक मूल्यांकन/ખાતર મૂલ્યાંકન): </strong> {data['fertilizer_evaluation']}</p>
-
                     <p><strong>Farming recommendation (खेती की सिफ़ारिश/ખેતીની ભલામણ): </strong> {data['farming_recommendation']}</p>
                     <p><strong>Alternative Crops (वैकल्पिक फसलें/વૈકલ્પિક પાક): </strong> {data['alternative_crops']}</p>
                     <p><strong>Recommendations (सिफारिशों/ભલામણો): </strong> {data['recommendations']}</p>

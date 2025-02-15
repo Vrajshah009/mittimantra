@@ -47,10 +47,12 @@ User Input:
 Generate the response in the following JSON format:
 
 {
-  "score": "Provide a suitability score out of 10 in this format: 'The suitability score for growing ${crop} in your ${acres} of ${soilType} is X.X/10.'",
+  "score": "Provide a suitability score out of 10 in this format: The suitability score for growing ${crop} in your ${acres} of ${soilType} is X.X/10.",
   "overview": "Summarize the overall suitability of the provided soil, crop, and conditions in 1-2 sentences.",
   "key_observations": "Highlight key observations about soil texture, nutrient availability, and crop compatibility in 2-3 sentences.",
   "assessments": "Provide potential yield percentage compared to optimal conditions, average expected yield per acre, and any soil or climate-related limitations.",
+  "yeild_chart": "Provide a chart showing the optimal and expected yield percentage for the selected crop.",
+  "soil_composition_chart": "Provide a chart showing the percentage of sand, silt, and clay in the soil.",
   "soil_and_weather_analysis": "Analyze soil composition, pH range, organic matter percentage, and how local weather affects crop growth.",
   "fertilizer_evaluation": "Evaluate the selected fertilizer's effectiveness and recommend additional nutrients or amendments if needed.",
   "farming_recommendation": "Provide recommendations on planting depth, spacing, irrigation frequency, and disease prevention strategies.",
@@ -210,14 +212,13 @@ Ensure the response is concise, clear, and provides practical advice for farmers
                             datasets: [{
                                 label: 'Rainfall',
                                 data: staticData.rainfall_chart.data,
-                                backgroundColor: 'rgba(153, 102, 255, 0.2)',
-                                borderColor: 'rgba(153, 102, 255, 1)',
-                                borderWidth: 1
+                                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                                borderColor: 'rgba(54, 162, 235, 1)',
+                                borderWidth: 2
                             }]
                         }}
                         options={{ responsive: true }}
                     />
-
                 </div>
             )}
         </div>

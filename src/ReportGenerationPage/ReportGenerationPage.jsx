@@ -97,8 +97,8 @@ Ensure the response is concise, clear, and provides practical advice for farmers
 
             const parsedData = JSON.parse(data.response);
 
-            setYieldData(parsedData.yield_chart);
-            setSoilCompositionData(parsedData.soil_composition_chart);
+            setYieldData(parsedData['yield_chart']);
+            setSoilCompositionData(parsedData['soil_composition_chart']);
 
             console.log('Yield Data:', yieldData);
             console.log('Soil Composition Data:', soilCompositionData);
@@ -144,14 +144,14 @@ Ensure the response is concise, clear, and provides practical advice for farmers
     }
 
     const staticData = {
-        yield_chart: {
-            labels: ["Optimal", "Expected"],
-            data: [yieldData.optimal_yield, yieldData.expected_yield]
-        },
-        soil_composition_chart: {
-            labels: ["Sand", "Silt", "Clay"],
-            data: [soilCompositionData.sand, soilCompositionData.silt, soilCompositionData.clay]
-        },
+        // yield_chart: {
+        //     labels: ["Optimal", "Expected"],
+        //     data: [yieldData.optimal_yield, yieldData.expected_yield]
+        // },
+        // soil_composition_chart: {
+        //     labels: ["Sand", "Silt", "Clay"],
+        //     data: [soilCompositionData.sand, soilCompositionData.silt, soilCompositionData.clay]
+        // },
         rainfall_chart: {
             labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
             data: [1, 1, 1, 1, 3, 128, 294, 250, 178, 13, 3, 1]
@@ -196,7 +196,7 @@ Ensure the response is concise, clear, and provides practical advice for farmers
                     <p><strong>Overview (सिंहावलोकन/વિહંગાવલોકન): </strong> {data['overview']}</p>
                     <p><strong>Assessments (आकलन/આકારણીઓ): </strong> {data['assessments']}</p>
                     <h3>Yield Chart</h3>
-                    <Bar
+                    {/* <Bar
                         key="yield_chart"
                         data={{
                             labels: staticData.yield_chart.labels,
@@ -209,10 +209,10 @@ Ensure the response is concise, clear, and provides practical advice for farmers
                             }]
                         }}
                         options={{ responsive: true }}
-                    />
+                    /> */}
                     <p><strong>Key Observations (मुख्य टिप्पणियाँ/મુખ્ય અવલોકનો): </strong> {data['key_observations']}</p>
                     <h3>Soil Composition Chart</h3>
-                    <Pie
+                    {/* <Pie
                         key="soil_composition_chart"
                         data={{
                             labels: staticData.soil_composition_chart.labels,
@@ -233,7 +233,7 @@ Ensure the response is concise, clear, and provides practical advice for farmers
                             }]
                         }}
                         options={{ responsive: true }}
-                    />
+                    /> */}
                     <p><strong>Soil and weather analysis (मिट्टी एवं मौसम विश्लेषण/જમીન અને હવામાન વિશ્લેષણ): </strong> {data['soil_and_weather_analysis']}</p>
                     {weatherData.length > 0 && (
                         <div>

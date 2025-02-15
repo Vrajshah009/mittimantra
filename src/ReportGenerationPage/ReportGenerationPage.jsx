@@ -97,11 +97,11 @@ Ensure the response is concise, clear, and provides practical advice for farmers
 
             const parsedData = JSON.parse(data.response);
 
-            setYieldData(parsedData['yield_chart']);
-            setSoilCompositionData(parsedData['soil_composition_chart']);
+            // setYieldData(parsedData['yield_chart']);
+            // setSoilCompositionData(parsedData['soil_composition_chart']);
 
-            console.log('Yield Data:', yieldData);
-            console.log('Soil Composition Data:', soilCompositionData);
+            // console.log('Yield Data:', yieldData);
+            // console.log('Soil Composition Data:', soilCompositionData);
             setData(parsedData);
 
             // Clear the state to prevent repeated API calls

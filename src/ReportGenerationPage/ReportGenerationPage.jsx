@@ -100,6 +100,8 @@ Ensure the response is concise, clear, and provides practical advice for farmers
             setYieldData(parsedData.yield_chart);
             setSoilCompositionData(parsedData.soil_composition_chart);
 
+            console.log('Yield Data:', yieldData);
+            console.log('Soil Composition Data:', soilCompositionData);
             setData(parsedData);
 
             // Clear the state to prevent repeated API calls

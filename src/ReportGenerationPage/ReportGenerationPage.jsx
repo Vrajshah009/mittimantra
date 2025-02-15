@@ -142,8 +142,14 @@ Ensure the response is concise, clear, and provides practical advice for farmers
     }
 
     const staticData = {
-        yield_chart: yieldData,
-        soil_composition_chart: soilCompositionData,
+        yield_chart: {
+            labels: ["Optimal", "Expected"],
+            data: [yieldData.optimal_yield, yieldData.expected_yield]
+        },
+        soil_composition_chart: {
+            labels: ["Sand", "Silt", "Clay"],
+            data: [soilCompositionData.sand, soilCompositionData.silt, soilCompositionData.clay]
+        },
         rainfall_chart: {
             labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
             data: [1, 1, 1, 1, 3, 128, 294, 250, 178, 13, 3, 1]

@@ -197,6 +197,8 @@ Ensure the response is concise, clear, and provides practical advice for farmers
                     <p><strong>Score (अंक/આંક): </strong> {data['score']}</p>
                     <p><strong>Overview (सिंहावलोकन/વિહંગાવલોકન): </strong> {data['overview']}</p>
                     <p><strong>Carbon Sequestration Analysis (कार्बन संग्रहण विश्लेषण/કાર્બન સંગ્રહણ વિશ્લેષણ): </strong> {data['carbon_sequestration_analysis']}</p>
+                    <p><strong>AI-based Water and Nutrient Optimization (एआई आधारित पानी और पोषक तत्वों का अनुकूलन/એઆઈ આધારિત પાણી અને પોષક તત્વોનું ઓપ્ટિમાઇઝેશન): </strong> {data['ai_based_water_and_nutrient_optimization']}</p>
+                    <p><strong>Cropping System and Multi-Cropping Recommendations (फसली तंत्र और बहु-फसली सिफारिशें/ફસલી તંત્ર અને મલ્ટી-ક્રોપિંગ ભલામણો): </strong> {data['cropping_system_and_multi_cropping_recommendations']}</p>
                     <p><strong>Assessments (आकलन/આકારણીઓ): </strong> {data['assessments']}</p>
                     {/* <h3>Yield Chart</h3> */}
                     {/* <Bar

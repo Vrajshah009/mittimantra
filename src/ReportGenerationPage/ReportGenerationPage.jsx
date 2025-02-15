@@ -29,6 +29,8 @@ const ReportGenerationPage = () => {
     const [error, setError] = useState(null);
     const [data, setData] = useState(null);
     const [weatherData, setWeatherData] = useState([]);
+    const [yieldData, setYieldData] = useState({});
+    const [soilCompositionData, setSoilCompositionData] = useState({});
 
     const prompt = `
 You are an AI assistant specialized in agricultural analysis. Your task is to create a comprehensive soil and crop assessment report for farmers in the following JSON format. The report should be accurately generated based on the user input and provide actionable insights. Ensure the response is written in simple, farmer-friendly language, avoiding technical jargon.
@@ -95,6 +97,9 @@ Ensure the response is concise, clear, and provides practical advice for farmers
 
             const parsedData = JSON.parse(data.response);
 
+            setYieldData(parsedData.yield_chart);
+            setSoilCompositionData(parsedData.soil_composition_chart);
+
             setData(parsedData);
 
             // Clear the state to prevent repeated API calls
@@ -137,14 +142,8 @@ Ensure the response is concise, clear, and provides practical advice for farmers
     }
 
     const staticData = {
-        yield_chart: {
-            labels: ["Optimal", "Expected"],
-            data: [100, 85]
-        },
-        soil_composition_chart: {
-            labels: ["Sand", "Silt", "Clay"],
-            data: [40, 40, 20]
-        },
+        yield_chart: yieldData,
+        soil_composition_chart: soilCompositionData,
         rainfall_chart: {
             labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
             data: [1, 1, 1, 1, 3, 128, 294, 250, 178, 13, 3, 1]
@@ -188,7 +187,45 @@ Ensure the response is concise, clear, and provides practical advice for farmers
                     <p><strong>Score (अंक/આંક): </strong> {data['score']}</p>
                     <p><strong>Overview (सिंहावलोकन/વિહંગાવલોકન): </strong> {data['overview']}</p>
                     <p><strong>Assessments (आकलन/આકારણીઓ): </strong> {data['assessments']}</p>
+                    <h3>Yield Chart</h3>
+                    <Bar
+                        key="yield_chart"
+                        data={{
+                            labels: staticData.yield_chart.labels,
+                            datasets: [{
+                                label: 'Yield',
+                                data: staticData.yield_chart.data,
+                                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                                borderColor: 'rgba(75, 192, 192, 1)',
+                                borderWidth: 1
+                            }]
+                        }}
+                        options={{ responsive: true }}
+                    />
                     <p><strong>Key Observations (मुख्य टिप्पणियाँ/મુખ્ય અવલોકનો): </strong> {data['key_observations']}</p>
+                    <h3>Soil Composition Chart</h3>
+                    <Pie
+                        key="soil_composition_chart"
+                        data={{
+                            labels: staticData.soil_composition_chart.labels,
+                            datasets: [{
+                                label: 'Soil Composition',
+                                data: staticData.soil_composition_chart.data,
+                                backgroundColor: [
+                                    'rgba(255, 99, 132, 0.2)',
+                                    'rgba(54, 162, 235, 0.2)',
+                                    'rgba(255, 206, 86, 0.2)'
+                                ],
+                                borderColor: [
+                                    'rgba(255, 99, 132, 1)',
+                                    'rgba(54, 162, 235, 1)',
+                                    'rgba(255, 206, 86, 1)'
+                                ],
+                                borderWidth: 1
+                            }]
+                        }}
+                        options={{ responsive: true }}
+                    />
                     <p><strong>Soil and weather analysis (मिट्टी एवं मौसम विश्लेषण/જમીન અને હવામાન વિશ્લેષણ): </strong> {data['soil_and_weather_analysis']}</p>
                     {weatherData.length > 0 && (
                         <div>
@@ -201,6 +238,7 @@ Ensure the response is concise, clear, and provides practical advice for farmers
                         </div>
                     )}
                     <p><strong>Fertilizer Evaluation (उर्वरक मूल्यांकन/ખાતર મૂલ્યાંકન): </strong> {data['fertilizer_evaluation']}</p>
+
                     <p><strong>Farming recommendation (खेती की सिफ़ारिश/ખેતીની ભલામણ): </strong> {data['farming_recommendation']}</p>
                     <p><strong>Alternative Crops (वैकल्पिक फसलें/વૈકલ્પિક પાક): </strong> {data['alternative_crops']}</p>
                     <p><strong>Recommendations (सिफारिशों/ભલામણો): </strong> {data['recommendations']}</p>

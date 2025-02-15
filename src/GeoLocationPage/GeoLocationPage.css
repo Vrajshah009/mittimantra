@@ -59,6 +59,14 @@
     justify-content: center;
 }
 
+.saved-locations h2{
+    font-size: 48px;
+    margin-bottom: 30px;
+    font-weight: 600;
+    color: #ECF0F1;
+    text-align: center;
+}
+
 .saved-location-content{
     display: flex;
     flex-direction: column;

@@ -1,5 +1,4 @@
-
-MittiMantra is a sustainable agri-tech initiative focused on improving soil health and helping farmers increase their crop productivity through eco-friendly and data-driven practices. The project blends traditional agricultural wisdom with modern scientific tools to support long-term farming success.
+<h3><b>MittiMantra</b></h3> is a sustainable agri-tech initiative focused on improving soil health and helping farmers increase their crop productivity through eco-friendly and data-driven practices. The project blends traditional agricultural wisdom with modern scientific tools to support long-term farming success.
 
 <b>What We Do</b>
 
@@ -14,11 +13,11 @@ MittiMantra is built with the farmer in mind. Our reports are simple, actionable
 
 <b>Why It Matters</b>
 <ol>
-Encourages sustainable agriculture and reduces chemical usage
+<li>Encourages sustainable agriculture and reduces chemical usage</li>
 
-Improves soil longevity and productivity over time
+<li>Improves soil longevity and productivity over time</li>
 
-Supports rural livelihoods through smarter, cost-effective farming
+<li>Supports rural livelihoods through smarter, cost-effective farming</li>
 
-Uses data and research to make agriculture more adaptive and resilien
+<li>Uses data and research to make agriculture more adaptive and resilien</li>
 </ol>

@@ -1,8 +1,24 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+MittiMantra is a sustainable agri-tech initiative focused on improving soil health and helping farmers increase their crop productivity through eco-friendly and data-driven practices. The project blends traditional agricultural wisdom with modern scientific tools to support long-term farming success.
 
-Currently, two official plugins are available:
+<b>What We Do</b>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<b>Soil Health Analysis</b>
+We evaluate soil conditions using affordable and environmentally safe techniques to understand nutrient levels and fertility status.
+
+<b>Customized Recommendations</b>
+Based on our analysis, we provide farmers with tailored strategies for crop selection, natural soil enhancers, and sustainable practices that improve yield without damaging the land.
+
+<b>Farmer Engagement</b>
+MittiMantra is built with the farmer in mind. Our reports are simple, actionable, and supported with hands-on guidance to ensure smooth implementation in the field.
+
+<b>Why It Matters</b>
+<ol>
+Encourages sustainable agriculture and reduces chemical usage
+
+Improves soil longevity and productivity over time
+
+Supports rural livelihoods through smarter, cost-effective farming
+
+Uses data and research to make agriculture more adaptive and resilien
+</ol>
